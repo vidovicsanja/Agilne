@@ -1,0 +1,2 @@
+INDEX VERSION 1.134+C:\Users\s\Documents\agilne-IT71-2018-Sanja-Vidovic\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
