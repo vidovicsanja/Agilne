@@ -25,12 +25,12 @@ public class CurrencyExchangeController {
     @RateLimiter(name = "default")
     public ResponseEntity<?> getExchange(@PathVariable String from, @PathVariable String to) {
 
-        String port = environment.getProperty("local.server.port"); //  accessing value of server.port property from application.properties
-        CurrencyExchange kurs = repo.findByFromAndToIgnoreCase(from, to); // find this in database, based on from and to values
+        String port = environment.getProperty("local.server.port"); 
+        CurrencyExchange exchangeRate = repo.findByFromAndToIgnoreCase(from, to);
 
-        if (kurs != null) {
-            kurs.setEnvironment(port);
-            return ResponseEntity.ok(kurs);
+        if (exchangeRate != null) {
+            exchangeRate.setEnvironment(port);
+            return ResponseEntity.ok(exchangeRate);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Requested currency exchange could not be found");
         }

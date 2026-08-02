@@ -13,7 +13,7 @@ public class CurrencyExchange {
     @Id
 	private long id;
 
-	@Column(name = "currency_from") //attribute name in database
+	@Column(name = "currency_from")
 	private String from;
 
 	@Column(name = "currency_to")
