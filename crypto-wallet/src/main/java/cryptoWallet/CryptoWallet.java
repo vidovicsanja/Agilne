@@ -3,12 +3,15 @@ package cryptoWallet;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class CryptoWallet {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	private BigDecimal btc;
