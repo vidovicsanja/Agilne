@@ -45,11 +45,11 @@ public class CryptoConversionController {
             CryptoWalletDto walletDto = new CryptoWalletDto(email, from, to, BigDecimal.valueOf(quantity),
                     responseBody.getToValue().multiply(BigDecimal.valueOf(quantity)));
 
-            ResponseEntity<CryptoWalletResponseDto> responseWallet = cryptoWalletProxy.walletConversion(walletDto);          
-                
+            ResponseEntity<CryptoWalletResponseDto> responseWallet = cryptoWalletProxy.walletConversion(walletDto);
+
             return ResponseEntity.status(HttpStatus.OK).body(responseWallet).getBody();
         } catch (FeignException e) {
-            return ResponseEntity.status(e.status()).body(e.getMessage());
+            return ResponseEntity.status(e.status()).body(e.contentUTF8());
         }
 	}
 
