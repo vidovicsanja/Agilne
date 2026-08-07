@@ -60,8 +60,12 @@ public class ApiGatewayAuthentication {
 		.pathMatchers(HttpMethod.POST, "/users-service/**").hasAnyRole("OWNER","ADMIN") //owner i admin mogu da dodaju, ali admin moze samo usera
 		.pathMatchers("/currency-exchange/**").permitAll()
 		.pathMatchers("/currency-conversion/**").hasRole("USER")
-		.pathMatchers("/bank-account/**").hasRole("ADMIN")
-		.pathMatchers("/crypto-wallet/**").hasRole("ADMIN")
+		.pathMatchers(HttpMethod.GET, "/bank-account/**").hasAnyRole("USER", "ADMIN")
+		.pathMatchers(HttpMethod.PUT, "/bank-account/**").hasRole("ADMIN") // samo admin moze da radi update
+		.pathMatchers(HttpMethod.POST, "/bank-account/**").hasRole("ADMIN") // samo admin moze da radi insert
+		.pathMatchers(HttpMethod.GET, "/crypto-wallet/**").hasAnyRole("USER", "ADMIN")
+		.pathMatchers(HttpMethod.PUT, "/crypto-wallet/**").hasRole("ADMIN") // samo admin moze da radi update
+		.pathMatchers(HttpMethod.POST, "/crypto-wallet/**").hasRole("ADMIN") // samo admin moze da radi insert
 		.pathMatchers("/crypto-exchange/**").permitAll()
 		.pathMatchers("/crypto-conversion/**").hasRole("USER")		
 		.pathMatchers("/trade-service/**").hasRole("USER")
